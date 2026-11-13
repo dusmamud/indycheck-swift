@@ -18,13 +18,13 @@ no network calls).
 
 1. In Xcode: **File → Add Package Dependencies…**
 2. Paste `https://github.com/dusmamud/indycheck-swift`
-3. Pick version **0.2.3** (Dependency Rule: Up to Next Major Version).
+3. Pick version **0.2.4** (Dependency Rule: Up to Next Major Version).
 
 ### SwiftPM (`Package.swift`)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/dusmamud/indycheck-swift", from: "0.2.3")
+    .package(url: "https://github.com/dusmamud/indycheck-swift", from: "0.2.4")
 ]
 ```
 
