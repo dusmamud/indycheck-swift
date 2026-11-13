@@ -34,6 +34,7 @@ let package = Package(
 EOF
 
 cat > "$WORKDIR/Sources/smoke/main.swift" <<'SWIFTEOF'
+import Foundation
 import IndyCheck
 
 func check(_ label: String, _ condition: Bool, _ detail: String) {
