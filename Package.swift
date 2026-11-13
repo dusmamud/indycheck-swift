@@ -13,8 +13,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IndyCheckFFI",
-            url: "https://github.com/dusmamud/indycheck/releases/download/indycheck-v0.2.3/IndyCheckFFI.xcframework.zip",
-            checksum: "165549626fb0618b81d3c9794ac1dec7076161a1dfcc5de5ec37ae81254d0def"
+            url: "https://github.com/dusmamud/indycheck/releases/download/indycheck-v0.2.4/IndyCheckFFI.xcframework.zip",
+            checksum: "a85564ff3d02b0e5d2c9bfd5bf00da8327e778e3adbb679dff15576db7a64d8a"
         ),
         .target(
             name: "IndyCheck",
