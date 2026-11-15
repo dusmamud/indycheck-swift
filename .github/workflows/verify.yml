@@ -31,13 +31,20 @@ jobs:
           bash scripts/smoke-test.sh '.package(url: "https://github.com/dusmamud/indycheck-swift", branch: "main")'
 
       # Runs ONLY after the smoke test above passes (steps run in order).
+      # Idempotent: if the tag is already published, creation is skipped
+      # and the exact-version smoke test below still runs against it —
+      # re-running a release no longer fails with "tag already exists".
       - name: Create release tag
         if: ${{ inputs.release_tag != '' }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag "${{ inputs.release_tag }}"
-          git push origin "${{ inputs.release_tag }}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${{ inputs.release_tag }}" > /dev/null; then
+            echo "Tag ${{ inputs.release_tag }} already exists on origin — skipping tag creation."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag "${{ inputs.release_tag }}"
+            git push origin "${{ inputs.release_tag }}"
+          fi
 
       # Final proof: resolve the package from the exact tag just created.
       - name: Smoke test against exact version
